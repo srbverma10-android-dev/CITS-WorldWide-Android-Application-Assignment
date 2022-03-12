@@ -1,6 +1,7 @@
 package com.sourabhverma.sourabhcitsworldwide.ui.home
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -28,7 +29,20 @@ class HomeFragment : Fragment() {
 
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
+
+        observers()
+
+        homeViewModel.newsApiHome()
+
         return root
+    }
+
+    private fun observers() {
+        homeViewModel.getNewsHomeApi().observe(this, {
+            if(it!=null){
+                Log.d("Sourabh", "observers: ${it.value[0]}")
+            }
+        })
     }
 
     override fun onDestroyView() {

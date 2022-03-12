@@ -1,13 +1,27 @@
 package com.sourabhverma.sourabhcitsworldwide.ui.home
 
-import androidx.lifecycle.LiveData
+import android.content.Context
+import android.graphics.Bitmap
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.sourabhverma.sourabhcitsworldwide.HomeResponeModel
+import java.io.File
 
 class HomeViewModel : ViewModel() {
 
-    private val _text = MutableLiveData<String>().apply {
-        value = "This is home Fragment"
+    private val repo : Repo = Repo()
+
+    private var newsApiLiveData : MutableLiveData<HomeResponeModel> = MutableLiveData()
+
+    fun newsApiHome(){
+        repo.newsHomeApi(){
+            if (it != null){
+                newsApiLiveData.postValue(it)
+            }
+        }
     }
-    val text: LiveData<String> = _text
+
+    fun getNewsHomeApi() : MutableLiveData<HomeResponeModel>{
+        return newsApiLiveData
+    }
 }
