@@ -15,11 +15,14 @@ import android.text.Spannable
 import android.text.style.ForegroundColorSpan
 
 import android.text.SpannableString
+import android.util.Log
 import android.widget.Toast
 
 class LoginSignUpActivity : AppCompatActivity() {
 
     private lateinit var binding : ActivityLoginSignUpBinding
+
+    private var alreadySelected : Int = 0
 
     private lateinit var sp : SharedPreferences
     private lateinit var e : SharedPreferences.Editor
@@ -91,14 +94,22 @@ class LoginSignUpActivity : AppCompatActivity() {
                 e.putString("Password", binding.signUpInclude.passwordEditText.text.toString())
                 e.putBoolean("IsLoggedIn", true)
                 if(e.commit()){
-                    var intent = Intent(this, MainActivity::class.java)
-                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-                    startActivity(intent)
-                    finish()
+                    binding.signUpInclude.root.visibility = View.GONE
+                    binding.languagePref.root.visibility = View.VISIBLE
+//                    var intent = Intent(this, MainActivity::class.java)
+//                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+//                    startActivity(intent)
+//                    finish()
                 }
             }
 
         }
+
+        binding.logInInclude.facebookImg.setOnClickListener {
+            binding.logInInclude.root.visibility = View.GONE
+            binding.signUpInclude.root.visibility = View.VISIBLE
+        }
+
 
         binding.logInInclude.signUpButton.setOnClickListener {
             showedError = false
@@ -117,14 +128,63 @@ class LoginSignUpActivity : AppCompatActivity() {
             }
 
             if(!showedError&& binding.logInInclude.passwordEditText.text.toString() == sp.getString("Password","")){
-                val intent = Intent(this, MainActivity::class.java)
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-                startActivity(intent)
-                finish()
+                binding.logInInclude.root.visibility = View.GONE
+                binding.languagePref.root.visibility = View.VISIBLE
+//                val intent = Intent(this, MainActivity::class.java)
+//                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+//                startActivity(intent)
+//                finish()
             } else{
                 Toast.makeText(this, "Wrong Password", Toast.LENGTH_SHORT).show()
             }
 
+        }
+
+
+        binding.languagePref.English.setOnClickListener {
+                val intent = Intent(this, MainActivity::class.java)
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                startActivity(intent)
+                finish()
+        }
+
+        binding.languagePref.hindi.setOnClickListener {
+                val intent = Intent(this, MainActivity::class.java)
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                startActivity(intent)
+                finish()
+        }
+        binding.languagePref.tamil.setOnClickListener {
+                val intent = Intent(this, MainActivity::class.java)
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                startActivity(intent)
+                finish()
+        }
+
+        binding.languagePref.telgu.setOnClickListener {
+                val intent = Intent(this, MainActivity::class.java)
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                startActivity(intent)
+                finish()
+        }
+        binding.languagePref.mal.setOnClickListener {
+                val intent = Intent(this, MainActivity::class.java)
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                startActivity(intent)
+                finish()
+        }
+
+        binding.languagePref.bangla.setOnClickListener {
+                val intent = Intent(this, MainActivity::class.java)
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                startActivity(intent)
+                finish()
+        }
+        binding.languagePref.marathi.setOnClickListener {
+                val intent = Intent(this, MainActivity::class.java)
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                startActivity(intent)
+                finish()
         }
 
 
@@ -146,7 +206,11 @@ class LoginSignUpActivity : AppCompatActivity() {
         if(binding.forgotPasswordInclude.root.visibility == View.VISIBLE){
             binding.forgotPasswordInclude.root.visibility = View.GONE
             binding.signUpInclude.root.visibility = View.VISIBLE
-        } else {
+        } else if (binding.languagePref.root.visibility == View.VISIBLE){
+            binding.languagePref.root.visibility = View.GONE
+            binding.logInInclude.root.visibility = View.VISIBLE
+            e.putBoolean("IsLoggedIn", false)
+        } else{
             super.onBackPressed()
         }
 

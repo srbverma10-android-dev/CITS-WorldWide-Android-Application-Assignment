@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">Sourabh CITS World Wide</string>
+    <string name="eng">English</string>
+    <string name="hindi">हिन्दी</string>
+    <string name="tamil">எல்</string>
+    <string name="telgu">తెలుగు</string>
+    <string name="mal">മലയാളം</string>
+    <string name="bangla">বাংলা</string>
+    <string name="marathi">मराठी</string>
+
+
 </resources>
