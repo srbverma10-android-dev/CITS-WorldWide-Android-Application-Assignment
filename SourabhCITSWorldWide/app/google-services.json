@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "831868333354",
+    "project_id": "sourabh-cits-world-wide",
+    "storage_bucket": "sourabh-cits-world-wide.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:831868333354:android:b9bbb9616d600636ca4253",
+        "android_client_info": {
+          "package_name": "com.sourabhverma.sourabhcitsworldwide"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "831868333354-vqm1usesdphs2eona78c7ed5lp5anvqe.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBgw8iBjM8aDVJHwq4LJ9ed_DXeIjFgQIU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "831868333354-vqm1usesdphs2eona78c7ed5lp5anvqe.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SourabhCITSWorldWide">
         <activity
+            android:name=".MainActivity"
+            android:exported="false" />
+        <activity
             android:name=".LoginSignUpActivity"
             android:exported="false" />
         <activity
